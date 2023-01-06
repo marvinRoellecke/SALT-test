@@ -14,7 +14,7 @@ function App() {
   }, [bootcampData]);
 
   async function handleAddDeveloper(newDeveloper) {
-    await fetch("http://localhost:3001/bootcamps", {
+    await fetch("http://localhost:3001/bootcamps/" + newDeveloper.bootcamp, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newDeveloper),
@@ -30,15 +30,14 @@ function App() {
     const bootcamp = form.bootcamp.value;
 
     const newDeveloper = {
-      firstName: firstName,
-      lastName: lastName,
       bootcamp: bootcamp,
+      name: firstName + " " + lastName,
     };
 
     //event.target.reset();
     form.firstName.focus();
     console.log(newDeveloper);
-    //handleAddDeveloper(newDeveloper);
+    handleAddDeveloper(newDeveloper);
 
     //event.target.reset();
   }
