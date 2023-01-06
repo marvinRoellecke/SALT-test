@@ -13,9 +13,34 @@ function App() {
     setBootcampsData(bootcampData);
   }, [bootcampData]);
 
+  async function handleAddDeveloper(newDeveloper) {
+    await fetch("http://localhost:3001/bootcamps", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newDeveloper),
+    });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
-    event.target.reset();
+
+    const form = event.target.elements;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    const bootcamp = form.bootcamp.value;
+
+    const newDeveloper = {
+      firstName: firstName,
+      lastName: lastName,
+      bootcamp: bootcamp,
+    };
+
+    //event.target.reset();
+    form.firstName.focus();
+    console.log(newDeveloper);
+    //handleAddDeveloper(newDeveloper);
+
+    //event.target.reset();
   }
 
   function handleFilter(event) {
