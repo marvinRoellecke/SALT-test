@@ -1,5 +1,6 @@
 import "./App.css";
 import Form from "./components/Form/Form";
+import Gallery from "./components/Gallery/Gallery";
 
 function App() {
   function handleSubmit(event) {
@@ -15,9 +16,7 @@ function App() {
       <main>
         <Form onSubmit={handleSubmit} />
         <section>filter</section>
-        <section>
-          <h2>Gallery</h2>
-        </section>
+        <Gallery />
       </main>
       <footer>(c) 2023 </footer>
     </>
