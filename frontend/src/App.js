@@ -1,29 +1,36 @@
 import "./App.css";
 import Form from "./components/Form/Form";
 import Gallery from "./components/Gallery/Gallery";
+import Filter from "./components/Filter/Filter";
 import { useEffect, useState } from "react";
+import useFetch from "./helpers/fetch";
 
 function App() {
+  const bootcampData = useFetch("http://localhost:3001/bootcamps");
   const [bootcampsData, setBootcampsData] = useState();
 
-  async function startFetch() {
-    try {
-      const response = await fetch("http://localhost:3001/bootcamps");
-      setBootcampsData(await response.json());
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   useEffect(() => {
-    startFetch();
-  }, []);
-
-  //console.log(bootcampsData);
+    setBootcampsData(bootcampData);
+  }, [bootcampData]);
 
   function handleSubmit(event) {
     event.preventDefault();
     event.target.reset();
+  }
+
+  function handleFilter(event) {
+    event.preventDefault();
+    const filter = event.target.value;
+
+    if (filter === "all") {
+      setBootcampsData(bootcampData);
+    } else {
+      setBootcampsData(
+        bootcampData.filter((entry) => {
+          return entry.bootcamp === filter;
+        })
+      );
+    }
   }
 
   return (
@@ -33,7 +40,7 @@ function App() {
       </header>
       <main>
         <Form onSubmit={handleSubmit} />
-        <section>filter</section>
+        <Filter onFilter={handleFilter} />
         <Gallery bootcampsData={bootcampsData} />
       </main>
       <footer>(c) 2023 </footer>

@@ -1,7 +1,6 @@
 import CardSection from "../CardSection/CardSection";
 
 export default function Gallery({ bootcampsData }) {
-  console.log(bootcampsData);
   return (
     <section>
       <h2>Gallery</h2>

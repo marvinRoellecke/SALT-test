@@ -8,7 +8,7 @@ export default function Form({ onSubmit }) {
         <input type="text" name="firstName" id="firstName" required />
         <label htmlFor="lastName">Last Name:</label>
         <input type="text" name="lastName" id="lastName" required />
-        <label htmlFor="bootcamp">Select bootcamp:</label>
+        <label htmlFor="bootcamp">Select Bootcamp:</label>
         <select name="bootcamp" id="bootcamp" required>
           <option value=""> -- please select -- </option>
           <option value="jsfs">jsfs</option>
