@@ -10,6 +10,7 @@ function App() {
   //const [data, setData] = useState();
   const [bootcampsData, setBootcampsData] = useState();
   const [filter, setFilter] = useState("all");
+  const [isWrongEntry, setIsWrongEntry] = useState(false);
 
   async function getData() {
     try {
@@ -61,6 +62,14 @@ function App() {
       name: firstName + " " + lastName,
     };
 
+    if (firstName === "" || lastName === "") {
+      setIsWrongEntry(true);
+      setTimeout(() => {
+        setIsWrongEntry(false);
+      }, 1000);
+      return;
+    }
+
     handleAddDeveloper(newDeveloper);
     form.addDeveloperFirstNameInput.focus();
     event.target.reset();
@@ -78,6 +87,9 @@ function App() {
         <h1 id="formTitle">Dev Track</h1>
       </header>
       <main>
+        {isWrongEntry && (
+          <div className="errorMessage">Please enter first and last name</div>
+        )}
         <Form onSubmit={handleSubmit} />
         <Filter onFilter={handleFilter} />
         <Gallery
