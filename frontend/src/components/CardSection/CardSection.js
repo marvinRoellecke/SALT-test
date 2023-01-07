@@ -5,19 +5,22 @@ export default function CardSection({
   title,
   bootcamp,
   onDeleteDeveloper,
+  className,
 }) {
   return (
     <>
       <h4>{title}</h4>
-      {people.map((person) => (
-        <ListEntry
-          key={person.id}
-          person={person}
-          bootcamp={bootcamp}
-          onDeleteDeveloper={onDeleteDeveloper}
-          title={title}
-        />
-      ))}
+      <ul className={className}>
+        {people.map((person) => (
+          <ListEntry
+            key={person.id}
+            person={person}
+            bootcamp={bootcamp}
+            onDeleteDeveloper={onDeleteDeveloper}
+            title={title}
+          />
+        ))}
+      </ul>
     </>
   );
 }

@@ -14,7 +14,7 @@ export default function Gallery({ bootcampsData, filter, onDeleteDeveloper }) {
         })
         .map((entry) => {
           return (
-            <article key={entry.bootcamp} className="--dev">
+            <article key={entry.bootcamp} className="bootcamp">
               <h3>{entry.bootcamp}</h3>
               <CardSection people={entry.instructors} title="Instructors:" />
               <CardSection
@@ -22,6 +22,7 @@ export default function Gallery({ bootcampsData, filter, onDeleteDeveloper }) {
                 title="Developers:"
                 bootcamp={entry.bootcamp}
                 onDeleteDeveloper={onDeleteDeveloper}
+                className="cardList"
               />
             </article>
           );
