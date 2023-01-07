@@ -10,10 +10,10 @@ export default function CardSection({
     <section>
       <h4>{title}</h4>
       <ul>
-        {people.map((guy) => (
+        {people.map((person) => (
           <ListEntry
-            key={guy.id}
-            guy={guy}
+            key={person.id}
+            person={person}
             bootcamp={bootcamp}
             onDeleteDeveloper={onDeleteDeveloper}
             title={title}
