@@ -58,4 +58,10 @@ describe("functional tests", () => {
     BootcampApp.addNewDeveloper("tester");
     cy.get(".errorMessage").should("exist");
   });
+
+  it("check if filter works", () => {
+    BootcampApp.filterSelect();
+    cy.wait(500);
+    cy.get(".gallery").children().its("length").should("eq", 2);
+  });
 });
