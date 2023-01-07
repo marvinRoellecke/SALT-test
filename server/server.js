@@ -27,7 +27,6 @@ app.get("/bootcamps", (_, res) => {
 app.post("/bootcamps/:bootcamp/", validateDeveloper, (req, res) => {
   const { bootcamp } = req.params;
   const course = database.find((camp) => camp.bootcamp === bootcamp);
-
   if (!course) {
     return res.sendStatus(400);
   }

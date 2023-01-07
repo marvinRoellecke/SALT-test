@@ -6,31 +6,60 @@ import { useEffect, useState } from "react";
 import useFetch from "./helpers/fetch";
 
 function App() {
-  const bootcampData = useFetch("http://localhost:3001/bootcamps");
+  //const data = useFetch("http://localhost:3001/bootcamps");
+  //const [data, setData] = useState();
   const [bootcampsData, setBootcampsData] = useState();
+  const [filter, setFilter] = useState("all");
+
+  async function getData() {
+    try {
+      const response = await fetch("http://localhost:3001/bootcamps");
+      const data = await response.json();
+      setBootcampsData(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
-    setBootcampsData(bootcampData);
-  }, [bootcampData]);
+    getData();
+  }, []);
+
+  /*   useEffect(() => {
+    setBootcampsData(data);
+  }, [data]); */
+
+  async function handleAddDeveloper(newDeveloper) {
+    await fetch("http://localhost:3001/bootcamps/" + newDeveloper.bootcamp, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newDeveloper),
+    });
+    getData();
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    const form = event.target.elements;
+    const firstName = form.firstName.value;
+    const lastName = form.lastName.value;
+    const bootcamp = form.bootcamp.value;
+
+    const newDeveloper = {
+      bootcamp: bootcamp,
+      name: firstName + " " + lastName,
+    };
+
+    handleAddDeveloper(newDeveloper);
+    form.firstName.focus();
     event.target.reset();
   }
 
   function handleFilter(event) {
     event.preventDefault();
-    const filter = event.target.value;
-
-    if (filter === "all") {
-      setBootcampsData(bootcampData);
-    } else {
-      setBootcampsData(
-        bootcampData.filter((entry) => {
-          return entry.bootcamp === filter;
-        })
-      );
-    }
+    const filterValue = event.target.value;
+    setFilter(filterValue);
   }
 
   return (
@@ -41,7 +70,7 @@ function App() {
       <main>
         <Form onSubmit={handleSubmit} />
         <Filter onFilter={handleFilter} />
-        <Gallery bootcampsData={bootcampsData} />
+        <Gallery bootcampsData={bootcampsData} filter={filter} />
       </main>
       <footer>(c) 2023 </footer>
     </>
