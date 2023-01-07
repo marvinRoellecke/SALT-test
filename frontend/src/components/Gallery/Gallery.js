@@ -1,8 +1,8 @@
 import CardSection from "../CardSection/CardSection";
 
-export default function Gallery({ bootcampsData, filter }) {
+export default function Gallery({ bootcampsData, filter, onDeleteDeveloper }) {
   return (
-    <section>
+    <section className="gallery">
       <h2>Gallery</h2>
       {bootcampsData
         ?.filter((entry) => {
@@ -14,10 +14,15 @@ export default function Gallery({ bootcampsData, filter }) {
         })
         .map((entry) => {
           return (
-            <article key={entry.bootcamp}>
+            <article key={entry.bootcamp} className="bootcamp">
               <h3>{entry.bootcamp}</h3>
               <CardSection people={entry.instructors} title="Instructors:" />
-              <CardSection people={entry.developers} title="Developers:" />
+              <CardSection
+                people={entry.developers}
+                title="Developers:"
+                bootcamp={entry.bootcamp}
+                onDeleteDeveloper={onDeleteDeveloper}
+              />
             </article>
           );
         })}
