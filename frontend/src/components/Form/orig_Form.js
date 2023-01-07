@@ -21,7 +21,8 @@ export default function Form({ onSubmit }) {
           required
         />
         <label htmlFor="bootcamp">Select Bootcamp:</label>
-        <select name="bootcamp" id="bootcamp">
+        <select name="bootcamp" id="bootcamp" required>
+          <option value=""> -- please select -- </option>
           <option value="jsfs">jsfs</option>
           <option value="dnfs">dnfs</option>
           <option value="jfs">jfs</option>

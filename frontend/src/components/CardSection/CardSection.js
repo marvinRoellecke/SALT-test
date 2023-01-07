@@ -7,19 +7,17 @@ export default function CardSection({
   onDeleteDeveloper,
 }) {
   return (
-    <section>
+    <>
       <h4>{title}</h4>
-      <ul className="cardList">
-        {people.map((person) => (
-          <ListEntry
-            key={person.id}
-            person={person}
-            bootcamp={bootcamp}
-            onDeleteDeveloper={onDeleteDeveloper}
-            title={title}
-          />
-        ))}
-      </ul>
-    </section>
+      {people.map((person) => (
+        <ListEntry
+          key={person.id}
+          person={person}
+          bootcamp={bootcamp}
+          onDeleteDeveloper={onDeleteDeveloper}
+          title={title}
+        />
+      ))}
+    </>
   );
 }

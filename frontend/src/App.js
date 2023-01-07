@@ -52,8 +52,8 @@ function App() {
     event.preventDefault();
 
     const form = event.target.elements;
-    const firstName = form.firstName.value;
-    const lastName = form.lastName.value;
+    const firstName = form.addDeveloperFirstNameInput.value;
+    const lastName = form.addDeveloperLastNameInput.value;
     const bootcamp = form.bootcamp.value;
 
     const newDeveloper = {
@@ -62,7 +62,7 @@ function App() {
     };
 
     handleAddDeveloper(newDeveloper);
-    form.firstName.focus();
+    form.addDeveloperFirstNameInput.focus();
     event.target.reset();
   }
 

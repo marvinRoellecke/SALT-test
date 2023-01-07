@@ -8,7 +8,7 @@ export default function ListEntry({
 }) {
   const [toggle, setToggle] = useState(false);
   return (
-    <p>
+    <li>
       {title === "Developers:" ? (
         <button
           type="button"
@@ -32,6 +32,6 @@ export default function ListEntry({
           delete
         </button>
       )}
-    </p>
+    </li>
   );
 }
