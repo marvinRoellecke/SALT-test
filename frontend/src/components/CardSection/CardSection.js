@@ -1,3 +1,5 @@
+import ListEntry from "../ListEntry/ListEntry";
+
 export default function CardSection({
   people,
   title,
@@ -9,19 +11,13 @@ export default function CardSection({
       <h4>{title}</h4>
       <ul>
         {people.map((guy) => (
-          <li key={guy.id}>
-            {guy.name}
-            {title === "Developers:" && (
-              <button
-                type="button"
-                onClick={() => {
-                  onDeleteDeveloper(bootcamp, guy.id);
-                }}
-              >
-                delete
-              </button>
-            )}
-          </li>
+          <ListEntry
+            key={guy.id}
+            guy={guy}
+            bootcamp={bootcamp}
+            onDeleteDeveloper={onDeleteDeveloper}
+            title={title}
+          />
         ))}
       </ul>
     </section>
