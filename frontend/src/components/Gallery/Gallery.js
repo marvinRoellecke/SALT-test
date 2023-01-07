@@ -1,6 +1,6 @@
 import CardSection from "../CardSection/CardSection";
 
-export default function Gallery({ bootcampsData, filter }) {
+export default function Gallery({ bootcampsData, filter, onDeleteDeveloper }) {
   return (
     <section>
       <h2>Gallery</h2>
@@ -17,7 +17,12 @@ export default function Gallery({ bootcampsData, filter }) {
             <article key={entry.bootcamp}>
               <h3>{entry.bootcamp}</h3>
               <CardSection people={entry.instructors} title="Instructors:" />
-              <CardSection people={entry.developers} title="Developers:" />
+              <CardSection
+                people={entry.developers}
+                title="Developers:"
+                bootcamp={entry.bootcamp}
+                onDeleteDeveloper={onDeleteDeveloper}
+              />
             </article>
           );
         })}

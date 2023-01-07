@@ -38,6 +38,16 @@ function App() {
     getData();
   }
 
+  async function handleDeleteDeveloper(bootcamp, id) {
+    await fetch(
+      `http://localhost:3001/bootcamps/${bootcamp}/developers/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    getData();
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -70,7 +80,11 @@ function App() {
       <main>
         <Form onSubmit={handleSubmit} />
         <Filter onFilter={handleFilter} />
-        <Gallery bootcampsData={bootcampsData} filter={filter} />
+        <Gallery
+          bootcampsData={bootcampsData}
+          filter={filter}
+          onDeleteDeveloper={handleDeleteDeveloper}
+        />
       </main>
       <footer>(c) 2023 </footer>
     </>
