@@ -72,7 +72,7 @@ describe("functional tests", () => {
   });
 
   it("check if delete button is rendered after toggle developer item", () => {
-    cy.get(".card").first().click();
+    cy.get(".toggled").first().click();
     cy.wait(500);
     cy.get(".deleteBtn").should("exist");
   });
