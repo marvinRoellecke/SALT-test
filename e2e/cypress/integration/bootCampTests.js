@@ -23,8 +23,8 @@ describe("functional tests", () => {
       return;
     },
     jsList: () => cy.get(".--dev").first(),
-    filterSelect: () =>
-      cy.get(".selectBootcamp").children().last().select("dnfs"),
+    filterSelect: (filterValue) =>
+      cy.get(".selectBootcamp").children().last().select(filterValue),
   };
 
   beforeEach(() => {
@@ -60,8 +60,20 @@ describe("functional tests", () => {
   });
 
   it("check if filter works", () => {
-    BootcampApp.filterSelect();
+    BootcampApp.filterSelect("dnfs");
     cy.wait(500);
     cy.get(".gallery").children().its("length").should("eq", 2);
+  });
+
+  it("check if all bootcamp cards rendered", () => {
+    BootcampApp.filterSelect("all");
+    cy.wait(500);
+    cy.get(".gallery").children().its("length").should("eq", 4);
+  });
+
+  it("check if delete button is rendered after toggle developer item", () => {
+    cy.get(".card").first().click();
+    cy.wait(500);
+    cy.get(".deleteBtn").should("exist");
   });
 });
