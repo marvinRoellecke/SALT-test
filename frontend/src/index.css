@@ -1,10 +1,29 @@
+:root {
+  --color-water-10: #e4e8f0;
+
+  --bc-background-color-1: #252629;
+  --bc-headline-color-1: #fa4b12;
+  --bc-background-color-2: #e5430f;
+  --bc-text-color: white;
+  --bc-background-color-3: #e4e8f0;
+}
+
 body {
-  margin: 0;
+  margin: 1rem auto;
+  padding: 0 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bc-background-color-3);
+  max-width: 1000px;
+}
+
+footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.7rem;
 }
 
 code {
@@ -17,12 +36,101 @@ header,
 main,
 footer,
 form,
-fieldset,
-section {
+fieldset {
   display: grid;
 }
 
 * {
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  font-size: 0.8rem;
+}
+
+h2,
+h4 {
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+li {
+  list-style: none;
+  margin: 0.3rem 0 0 1rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+fieldset {
+  border: none;
+}
+
+legend {
+  display: none;
+}
+
+input {
+  margin-bottom: 0.5rem;
+}
+
+button[type="submit"] {
+  padding: 0.5rem 2rem;
+  width: fit-content;
+  margin: 1.5rem auto;
+  font-weight: bolder;
+  background-color: var(--bc-background-color-2);
+  color: var(--bc-text-color);
+  border: none;
+  border-radius: 5px;
+}
+
+.toggled {
+  background: none;
+  border: none;
+  color: var(--bc-text-color);
+  font-size: 1rem;
+}
+
+.toggled:hover,
+.toggled:focus {
+  background-color: var(--bc-background-color-3);
+  color: var(--bc-background-color-1);
+  padding: 0 0.2rem;
+  border-radius: 3px;
+  outline: none;
+}
+
+.deleteBtn {
+  background-color: var(--bc-background-color-3);
+  color: var(--bc-background-color-1);
+  border: none;
+  padding: 0.1rem 0.2rem;
+  border-radius: 5px;
+}
+
+.deleteBtn:hover,
+.deleteBtn:focus {
+  background-color: var(--bc-headline-color-1);
+  color: var(--bc-text-color);
+  outline: none;
+}
+
+.errorMessage {
+  justify-self: center;
+  position: absolute;
+  top: 5rem;
+  background-color: var(--bc-background-color-2);
+  opacity: 0.9;
+  color: var(--bc-text-color);
+  font-size: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 5px;
 }

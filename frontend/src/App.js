@@ -3,11 +3,8 @@ import Form from "./components/Form/Form";
 import Gallery from "./components/Gallery/Gallery";
 import Filter from "./components/Filter/Filter";
 import { useEffect, useState } from "react";
-import useFetch from "./helpers/fetch";
 
 function App() {
-  //const data = useFetch("http://localhost:3001/bootcamps");
-  //const [data, setData] = useState();
   const [bootcampsData, setBootcampsData] = useState();
   const [filter, setFilter] = useState("all");
   const [isWrongEntry, setIsWrongEntry] = useState(false);
@@ -25,10 +22,6 @@ function App() {
   useEffect(() => {
     getData();
   }, []);
-
-  /*   useEffect(() => {
-    setBootcampsData(data);
-  }, [data]); */
 
   async function handleAddDeveloper(newDeveloper) {
     await fetch("http://localhost:3001/bootcamps/" + newDeveloper.bootcamp, {
@@ -51,7 +44,6 @@ function App() {
 
   function handleSubmit(event) {
     event.preventDefault();
-
     const form = event.target.elements;
     const firstName = form.addDeveloperFirstNameInput.value;
     const lastName = form.addDeveloperLastNameInput.value;
@@ -66,7 +58,7 @@ function App() {
       setIsWrongEntry(true);
       setTimeout(() => {
         setIsWrongEntry(false);
-      }, 1000);
+      }, 2000);
       return;
     }
 
@@ -98,7 +90,7 @@ function App() {
           onDeleteDeveloper={handleDeleteDeveloper}
         />
       </main>
-      <footer>(c) 2023 </footer>
+      <footer> SALT test - 2023 </footer>
     </>
   );
 }

@@ -62,7 +62,7 @@ describe("functional tests", () => {
   it("check if filter works", () => {
     BootcampApp.filterSelect("dnfs");
     cy.wait(500);
-    cy.get(".gallery").children().its("length").should("eq", 2);
+    cy.get(".gallery").children(".bootcamp").its("length").should("eq", 1);
   });
 
   it("check if all bootcamp cards rendered", () => {
@@ -72,7 +72,7 @@ describe("functional tests", () => {
   });
 
   it("check if delete button is rendered after toggle developer item", () => {
-    cy.get(".card").first().click();
+    cy.get(".toggled").first().click();
     cy.wait(500);
     cy.get(".deleteBtn").should("exist");
   });
