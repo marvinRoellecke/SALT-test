@@ -24,7 +24,7 @@ describe("functional tests", () => {
     },
     jsList: () => cy.get(".--dev").first(),
     filterSelect: (filterValue) =>
-      cy.get(".selectBootcamp").children().last().select(filterValue),
+      cy.get(".selectBootcamp").select(filterValue),
   };
 
   beforeEach(() => {
@@ -39,14 +39,14 @@ describe("functional tests", () => {
   });
 
   it("creates a new developer", () => {
-    cy.get(".--dev")
+    cy.get(".cardList")
       .first()
       .children()
       .its("length")
       .then((number) => {
         BootcampApp.addNewDeveloper(devFirstName, devLastName);
         cy.wait(500);
-        cy.get(".--dev")
+        cy.get(".cardList")
           .first()
           .children()
           .its("length")
@@ -68,7 +68,7 @@ describe("functional tests", () => {
   it("check if all bootcamp cards rendered", () => {
     BootcampApp.filterSelect("all");
     cy.wait(500);
-    cy.get(".gallery").children().its("length").should("eq", 4);
+    cy.get(".gallery").children(".bootcamp").its("length").should("eq", 3);
   });
 
   it("check if delete button is rendered after toggle developer item", () => {
