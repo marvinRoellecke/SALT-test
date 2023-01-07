@@ -5,9 +5,21 @@ export default function Form({ onSubmit }) {
       <fieldset>
         <legend>developer data</legend>
         <label htmlFor="firstName">First Name:</label>
-        <input type="text" name="firstName" id="firstName" required />
+        <input
+          type="text"
+          name="firstName"
+          id="firstName"
+          className="addDeveloperFirstNameInput"
+          required
+        />
         <label htmlFor="lastName">Last Name:</label>
-        <input type="text" name="lastName" id="lastName" required />
+        <input
+          type="text"
+          name="lastName"
+          id="lastName"
+          className="addDeveloperLastNameInput"
+          required
+        />
         <label htmlFor="bootcamp">Select Bootcamp:</label>
         <select name="bootcamp" id="bootcamp" required>
           <option value=""> -- please select -- </option>
@@ -16,7 +28,9 @@ export default function Form({ onSubmit }) {
           <option value="jfs">jfs</option>
         </select>
       </fieldset>
-      <button type="submit">Add Developer</button>
+      <button type="submit" className="btnAddDeveloper">
+        Add Developer
+      </button>
     </form>
   );
 }

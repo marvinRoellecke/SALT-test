@@ -10,7 +10,11 @@ export default function ListEntry({
   return (
     <li>
       {title === "Developers:" ? (
-        <button type="button" onClick={() => setToggle(!toggle)}>
+        <button
+          type="button"
+          onClick={() => setToggle(!toggle)}
+          className="card toggled"
+        >
           {person.name}
         </button>
       ) : (
@@ -20,6 +24,7 @@ export default function ListEntry({
       {title === "Developers:" && toggle && (
         <button
           type="button"
+          className="deleteBtn"
           onClick={() => {
             onDeleteDeveloper(bootcamp, person.id);
           }}

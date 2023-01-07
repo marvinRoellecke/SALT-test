@@ -9,7 +9,7 @@ export default function CardSection({
   return (
     <section>
       <h4>{title}</h4>
-      <ul>
+      <ul className="cardList">
         {people.map((person) => (
           <ListEntry
             key={person.id}
