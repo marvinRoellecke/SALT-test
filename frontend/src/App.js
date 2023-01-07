@@ -98,7 +98,7 @@ function App() {
           onDeleteDeveloper={handleDeleteDeveloper}
         />
       </main>
-      <footer>(c) 2023 </footer>
+      <footer> SALT test - 2023 </footer>
     </>
   );
 }
