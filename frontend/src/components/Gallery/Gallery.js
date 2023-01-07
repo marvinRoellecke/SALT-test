@@ -22,6 +22,7 @@ export default function Gallery({ bootcampsData, filter, onDeleteDeveloper }) {
                 title="Developers:"
                 bootcamp={entry.bootcamp}
                 onDeleteDeveloper={onDeleteDeveloper}
+                className="cardList"
               />
             </article>
           );

@@ -5,12 +5,11 @@ export default function CardSection({
   title,
   bootcamp,
   onDeleteDeveloper,
-  className,
 }) {
   return (
-    <>
+    <section>
       <h4>{title}</h4>
-      <ul className={className}>
+      <ul className="cardList">
         {people.map((person) => (
           <ListEntry
             key={person.id}
@@ -21,6 +20,6 @@ export default function CardSection({
           />
         ))}
       </ul>
-    </>
+    </section>
   );
 }
