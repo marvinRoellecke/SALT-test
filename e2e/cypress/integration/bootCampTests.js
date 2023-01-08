@@ -39,14 +39,14 @@ describe("functional tests", () => {
   });
 
   it("creates a new developer", () => {
-    cy.get(".cardList")
+    cy.get(".--dev")
       .first()
       .children()
       .its("length")
       .then((number) => {
         BootcampApp.addNewDeveloper(devFirstName, devLastName);
         cy.wait(500);
-        cy.get(".cardList")
+        cy.get(".--dev")
           .first()
           .children()
           .its("length")
@@ -62,7 +62,7 @@ describe("functional tests", () => {
   it("check if filter works", () => {
     BootcampApp.filterSelect("dnfs");
     cy.wait(500);
-    cy.get(".gallery").children(".bootcamp").its("length").should("eq", 1);
+    cy.get(".bootcamp").children(".cardList").its("length").should("eq", 2);
   });
 
   it("check if all bootcamp cards rendered", () => {
