@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [bootcampsData, setBootcampsData] = useState();
   const [filter, setFilter] = useState("all");
-  const [isWrongEntry, setIsWrongEntry] = useState(false);
+  const [isInvalid, setIsInvalid] = useState(false);
 
   async function getData() {
     try {
@@ -48,16 +48,15 @@ function App() {
     const firstName = form.addDeveloperFirstNameInput.value;
     const lastName = form.addDeveloperLastNameInput.value;
     const bootcamp = form.bootcamp.value;
-
     const newDeveloper = {
       bootcamp: bootcamp,
       name: firstName + " " + lastName,
     };
 
     if (firstName === "" || lastName === "") {
-      setIsWrongEntry(true);
+      setIsInvalid(true);
       setTimeout(() => {
-        setIsWrongEntry(false);
+        setIsInvalid(false);
       }, 2000);
       return;
     }
@@ -79,7 +78,7 @@ function App() {
         <h1 id="formTitle">Dev Track</h1>
       </header>
       <main>
-        {isWrongEntry && (
+        {isInvalid && (
           <div className="errorMessage">Please enter first and last name</div>
         )}
         <Form onSubmit={handleSubmit} />
