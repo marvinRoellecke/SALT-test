@@ -1,7 +1,7 @@
-import ListEntry from "../ListEntry/ListEntry";
+import Card from "../Card/Card";
 
-export default function CardSection({
-  people,
+export default function CardList({
+  group,
   title,
   bootcamp,
   onDeleteDeveloper,
@@ -11,8 +11,8 @@ export default function CardSection({
     <>
       <h4>{title}</h4>
       <ul className={className}>
-        {people.map((person) => (
-          <ListEntry
+        {group.map((person) => (
+          <Card
             key={person.id}
             person={person}
             bootcamp={bootcamp}

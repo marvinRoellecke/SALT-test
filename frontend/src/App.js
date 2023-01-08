@@ -5,15 +5,15 @@ import Filter from "./components/Filter/Filter";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [bootcampsData, setBootcampsData] = useState();
+  const [bootcampData, setBootcampData] = useState();
   const [filter, setFilter] = useState("all");
-  const [isWrongEntry, setIsWrongEntry] = useState(false);
+  const [isInvalid, setIsInvalid] = useState(false);
 
   async function getData() {
     try {
       const response = await fetch("http://localhost:3001/bootcamps");
       const data = await response.json();
-      setBootcampsData(data);
+      setBootcampData(data);
     } catch (error) {
       console.error(error);
     }
@@ -48,16 +48,15 @@ function App() {
     const firstName = form.addDeveloperFirstNameInput.value;
     const lastName = form.addDeveloperLastNameInput.value;
     const bootcamp = form.bootcamp.value;
-
     const newDeveloper = {
       bootcamp: bootcamp,
       name: firstName + " " + lastName,
     };
 
     if (firstName === "" || lastName === "") {
-      setIsWrongEntry(true);
+      setIsInvalid(true);
       setTimeout(() => {
-        setIsWrongEntry(false);
+        setIsInvalid(false);
       }, 2000);
       return;
     }
@@ -79,18 +78,20 @@ function App() {
         <h1 id="formTitle">Dev Track</h1>
       </header>
       <main>
-        {isWrongEntry && (
+        {isInvalid && (
           <div className="errorMessage">Please enter first and last name</div>
         )}
         <Form onSubmit={handleSubmit} />
         <Filter onFilter={handleFilter} />
         <Gallery
-          bootcampsData={bootcampsData}
+          bootcampData={bootcampData}
           filter={filter}
           onDeleteDeveloper={handleDeleteDeveloper}
         />
       </main>
-      <footer> SALT test - 2023 </footer>
+      <footer>
+        <p>SALT test - 2023</p>
+      </footer>
     </>
   );
 }

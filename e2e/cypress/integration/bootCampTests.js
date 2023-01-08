@@ -76,4 +76,22 @@ describe("functional tests", () => {
     cy.wait(500);
     cy.get(".deleteBtn").should("exist");
   });
+
+  it("check if developer is removed after delete button is clicked", () => {
+    cy.get(".--dev")
+      .first()
+      .children()
+      .its("length")
+      .then((number) => {
+        cy.get(".toggled").first().click();
+        cy.wait(500);
+        cy.get(".deleteBtn").click();
+        cy.wait(500);
+        cy.get(".--dev")
+          .first()
+          .children()
+          .its("length")
+          .should("be.lt", number);
+      });
+  });
 });

@@ -1,16 +1,16 @@
 import "./galery.css";
-import CardSection from "../CardSection/CardSection";
+import CardList from "../CardList/CardList";
 
-export default function Gallery({ bootcampsData, filter, onDeleteDeveloper }) {
+export default function Gallery({ bootcampData, filter, onDeleteDeveloper }) {
   return (
     <>
       <section>
         <h2>Gallery</h2>
         <div className="gallery">
-          {bootcampsData
+          {bootcampData
             ?.filter((entry) => {
               if (filter === "all") {
-                return bootcampsData;
+                return bootcampData;
               } else {
                 return entry.bootcamp === filter;
               }
@@ -19,13 +19,13 @@ export default function Gallery({ bootcampsData, filter, onDeleteDeveloper }) {
               return (
                 <article key={entry.bootcamp} className="bootcamp">
                   <h3>{entry.bootcamp}</h3>
-                  <CardSection
-                    people={entry.instructors}
+                  <CardList
+                    group={entry.instructors}
                     title="Instructors:"
                     className="cardList"
                   />
-                  <CardSection
-                    people={entry.developers}
+                  <CardList
+                    group={entry.developers}
                     title="Developers:"
                     bootcamp={entry.bootcamp}
                     onDeleteDeveloper={onDeleteDeveloper}
