@@ -5,7 +5,7 @@ import Filter from "./components/Filter/Filter";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [bootcampsData, setBootcampsData] = useState();
+  const [bootcampData, setBootcampData] = useState();
   const [filter, setFilter] = useState("all");
   const [isInvalid, setIsInvalid] = useState(false);
 
@@ -13,7 +13,7 @@ function App() {
     try {
       const response = await fetch("http://localhost:3001/bootcamps");
       const data = await response.json();
-      setBootcampsData(data);
+      setBootcampData(data);
     } catch (error) {
       console.error(error);
     }
@@ -84,12 +84,14 @@ function App() {
         <Form onSubmit={handleSubmit} />
         <Filter onFilter={handleFilter} />
         <Gallery
-          bootcampsData={bootcampsData}
+          bootcampData={bootcampData}
           filter={filter}
           onDeleteDeveloper={handleDeleteDeveloper}
         />
       </main>
-      <footer> SALT test - 2023 </footer>
+      <footer>
+        <p>SALT test - 2023</p>
+      </footer>
     </>
   );
 }

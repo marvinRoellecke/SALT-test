@@ -1,11 +1,6 @@
 import { useState } from "react";
 
-export default function ListEntry({
-  title,
-  person,
-  onDeleteDeveloper,
-  bootcamp,
-}) {
+export default function Card({ title, person, onDeleteDeveloper, bootcamp }) {
   const [toggle, setToggle] = useState(false);
   return (
     <li>
