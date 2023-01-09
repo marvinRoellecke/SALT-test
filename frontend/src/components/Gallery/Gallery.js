@@ -1,5 +1,5 @@
 import "./galery.css";
-import CardList from "../CardList/CardList";
+import Card from "../Card/Card";
 
 export default function Gallery({ bootcampData, filter, onDeleteDeveloper }) {
   return (
@@ -19,12 +19,12 @@ export default function Gallery({ bootcampData, filter, onDeleteDeveloper }) {
               return (
                 <article key={entry.bootcamp} className="bootcamp">
                   <h3>{entry.bootcamp}</h3>
-                  <CardList
+                  <Card
                     group={entry.instructors}
                     title="Instructors:"
                     className="cardList"
                   />
-                  <CardList
+                  <Card
                     group={entry.developers}
                     title="Developers:"
                     bootcamp={entry.bootcamp}

@@ -1,32 +1,26 @@
-import { useState } from "react";
+import Item from "../Item/Item";
 
-export default function Card({ title, person, onDeleteDeveloper, bootcamp }) {
-  const [toggle, setToggle] = useState(false);
+export default function Card({
+  group,
+  title,
+  bootcamp,
+  onDeleteDeveloper,
+  className,
+}) {
   return (
-    <li>
-      {title === "Developers:" ? (
-        <button
-          type="button"
-          onClick={() => setToggle(!toggle)}
-          className="card toggled"
-        >
-          {person.name}
-        </button>
-      ) : (
-        <span>{person.name} </span>
-      )}
-
-      {title === "Developers:" && toggle && (
-        <button
-          type="button"
-          className="deleteBtn"
-          onClick={() => {
-            onDeleteDeveloper(bootcamp, person.id);
-          }}
-        >
-          delete
-        </button>
-      )}
-    </li>
+    <>
+      <h4>{title}</h4>
+      <ul className={className}>
+        {group.map((person) => (
+          <Item
+            key={person.id}
+            person={person}
+            bootcamp={bootcamp}
+            onDeleteDeveloper={onDeleteDeveloper}
+            title={title}
+          />
+        ))}
+      </ul>
+    </>
   );
 }
